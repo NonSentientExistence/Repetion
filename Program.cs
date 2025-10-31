@@ -5,7 +5,7 @@ while (running_main)
 {
   ConsoleClear();
   Console.WriteLine("Choose function");
-  Console.WriteLine("A: Loop Arrays -- B: Input to Array -- C: Input to List -- D: Echo from file");
+  Console.WriteLine("A: Loop Arrays -- B: Input to Array -- C: Input to List -- D: Echo from file -- E: Grid");
   menu = Console.ReadLine()?.ToLower();
   switch (menu)
   {
@@ -214,8 +214,26 @@ while (running_main)
       }
       break;
 
+    case "e":
+      {
+        int width = 9;
+        int lenght = 9;
+        int array_lenght = width * lenght;
 
+        string[] grid = new string[array_lenght];
 
+        for (int i = width; i > 0; i--)
+        {
+          Console.Write("|");
+          for (int j = lenght; j > 0; j--)
+          {
+            Console.Write("_|");
+          }
+          Console.WriteLine("");
+        }
+        Console.ReadLine();
+      }
+      break;
     case "q":
       {
         running_main = false;
