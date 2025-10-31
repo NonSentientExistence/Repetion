@@ -132,6 +132,7 @@ while (running_main)
       break;
 
     case "d": // Read from file. If !Exists, create. 
+    //Creates file and dir
       {
         if (!File.Exists(Path.Combine("Data", "Extra.CSV")))
         {
@@ -143,7 +144,7 @@ while (running_main)
         }
 
         string? line;
-
+        //Read from file. If empty, populate the file
         try
         {
           using (StreamReader Reader = new StreamReader(Path.Combine("Data", "Extra.CSV")))
@@ -172,7 +173,7 @@ while (running_main)
         }
 
         catch { Console.WriteLine("File could not be read!"); }
-
+        //Echos file lines
         try
         {
           using (StreamReader Reader = new StreamReader(Path.Combine("Data", "Extra.CSV")))
@@ -184,9 +185,36 @@ while (running_main)
           }
         }
         catch { Console.WriteLine("File could not be read!"); }
+
+        Console.WriteLine("\nEvery other line\n");
+        //Echos every other line. Uses a bool in loop to just echo every other line
+        try
+        {
+          bool changeling = true; 
+
+          using (StreamReader Reader = new StreamReader(Path.Combine("Data", "Extra.CSV")))
+          {
+            while ((line = Reader.ReadLine()) != null)
+            {
+              if (changeling)
+              {
+                Console.WriteLine(line);
+                changeling = false;
+              }
+              else if(!changeling)
+              {
+                changeling = true;
+              }
+            }
+          }
+        }
+        catch { Console.WriteLine("File could not be read!"); }
+
         Console.ReadLine();
       }
       break;
+
+
 
     case "q":
       {
