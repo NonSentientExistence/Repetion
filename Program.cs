@@ -46,13 +46,11 @@ while (running_main)
             if ((i + 1) % 2 == 0)
             {
               even_numbers[array_counter] = i + 1;
+              Console.WriteLine(even_numbers[array_counter]);
               array_counter++;
             }
-            else
-            {
-              continue;
-            }
           }
+          Console.ReadLine();
         }
       }
       break;
